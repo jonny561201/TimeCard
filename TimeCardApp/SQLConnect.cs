@@ -27,13 +27,25 @@ namespace TimeCardApp
 
         internal void WriteTable(String InsertValue)
         {
-            SqlCommand test = new SqlCommand();
-            test.Connection = testConn;
-            test.CommandText = InsertValue;
-            test.ExecuteNonQuery();
+            SqlCommand writeCmd = new SqlCommand();
+            writeCmd.Connection = testConn;
+            writeCmd.CommandText = InsertValue;
+            writeCmd.ExecuteNonQuery();
         }
 
-//        try
+        internal String ReadTable(String ReadValue)
+        {
+            SqlCommand ReadCmd = new SqlCommand();
+            Sql
+            ReadCmd.CommandText = ReadValue;
+            ReadCmd.Connection = testConn;
+            ReadCmd.ExecuteReader();
+
+            return 
+        }
+
+
+        //        try
 //        {
 //            testConn.Open();
 //            msg = new SqlCommand("select * from Table", testConn).ToString();
