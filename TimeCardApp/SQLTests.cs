@@ -13,6 +13,7 @@ namespace TimeCardApp
         private class SQLConnectTests
         {
             SqlConnect connection = new SqlConnect();
+
             [Test]
             public void SQLConnection()
             {
@@ -26,6 +27,14 @@ namespace TimeCardApp
                 connection.SqlConnector();
                 String closeState = connection.SqlClose().State.ToString();
                 Assert.AreEqual(closeState,"Closed");
+            }
+
+            [Test]
+            public void WriteToTable()
+            {
+                connection.SqlConnector();
+                String InsertValue = "INSERT INTO TIME_CARD (Start_Date, End_Date) Values (2015-02-15 01:55:00.000,2015-02-16 01:50:00.000)";
+                connection.WriteTable(InsertValue);
             }
 
         }
