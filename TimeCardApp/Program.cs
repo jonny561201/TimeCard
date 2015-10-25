@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Drawing.Text;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,22 +15,12 @@ namespace TimeCardApp
         [STAThread]
         static void Main()
         {
-            String msg;
+            SqlConnect sqlConnect = new SqlConnect();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 //            Application.Run(new Form1());
-            SqlConnection testConn = new SqlConnection("Data Source=(Local);Initial Catalog=Table;Integrated Security=True");
-            try
-            {
-                testConn.Open();
-                msg = new SqlCommand("select * from Table", testConn).ToString();
-            }
-            catch (Exception)
-            {
-                
-                msg = "Connection to SQL Server Failed";
-            }
-            
+            sqlConnect.SqlConnector();
+
 
         }
     }
