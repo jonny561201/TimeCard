@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -33,15 +35,20 @@ namespace TimeCardApp
             writeCmd.ExecuteNonQuery();
         }
 
-        public String ReadTable(String ReadValue)
+        public Dictionary<String, String> ReadTable(String ReadValue)
         {
-            SqlCommand ReadCmd = new SqlCommand("select * from ");
-            Sql
-            ReadCmd.CommandText = ReadValue;
-            ReadCmd.Connection = testConn;
-            ReadCmd.ExecuteReader();
+            SqlCommand ReadCmd = new SqlCommand("select * from TIME_CARD where Start_Date = " + ReadValue, testConn);
+            Dictionary<String, String> databaseCollectiDictionary = new Dictionary<string, string>();
+//            ReadCmd.CommandText = ReadValue;
+//            ReadCmd.Connection = testConn;
+            SqlDataReader MyReader = ReadCmd.ExecuteReader();
 
-            return 
+            while (MyReader.Read())
+            {
+                databaseCollectiDictionary.Add(MyReader["Start_Date"].ToString(), MyReader["End_Date"].ToString());
+            }
+
+            return databaseCollectiDictionary;
         }
 
 

@@ -12,7 +12,7 @@ namespace TimeCardApp
         SqlConnection SqlConnector();
         SqlConnection SqlClose();
         void WriteTable(String InsertValue);
-        String ReadTable(String ReadValue);
+        Dictionary<String, String> ReadTable(String ReadValue);
 
     }
 }

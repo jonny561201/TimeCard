@@ -44,7 +44,7 @@ namespace TimeCardApp
             public void ReadFromTable()
             {
                 connection.SqlConnector();
-                String ReadValue = "SELECT * FROM TIME_CARD WHERE Start_Date='2002-09-24 01:00:00.000'";
+                String ReadValue = "'2002-09-24 01:00:00.000'";
                 connection.ReadTable(ReadValue);
                 connection.SqlClose();
             }
